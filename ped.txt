@@ -1,0 +1,17 @@
+Id,sire,dam
+a,0,0
+b,0,0
+c,0,0
+d,0,0
+e,a,c
+f,a,d
+g,a,c
+h,b,d
+i,e,g
+j,f,g
+k,f,h
+l,f,h
+m,i,k
+n,i,k
+o,i,k
+p,j,k
