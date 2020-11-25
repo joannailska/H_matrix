@@ -107,6 +107,11 @@ if __name__ == "__main__":
 		ped = pd.read_csv(ped_file)
 		ped.columns = ['id','sire','dam']
 		
+		## Remove any potential entries where id=0
+		ped = ped.loc[ped['id']!=0]
+		ped = ped.loc[ped['id']!='0']
+		
+		
 		## Recode the IDs
 		rec_ID = {}
 		for i, name in enumerate(ped['id'].values):
@@ -167,7 +172,7 @@ if __name__ == "__main__":
 		hinv.update(df2)
 		
 		## Turn into lower triangular, keep only non zero entries
-		stacked = hinv.mask(np.triu(np.ones(hinv.shape)).astype(bool)).stack().to_frame()
+		stacked = hinv.mask(np.triu(np.ones(hinv.shape),1).astype(bool)).stack().to_frame()
 		stacked.index.names=['id1','id2']
 		stacked.reset_index(level='id1')
 		stacked = stacked.reset_index()
